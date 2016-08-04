@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">EventMap</string>
+    <string name="title_activity_event_map">EventMapActivity</string>
+</resources>
