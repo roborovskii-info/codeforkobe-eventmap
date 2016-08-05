@@ -6,15 +6,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.codeforkobe.eventmap.R;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
-import java.util.List;
 
 public class EventMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -34,6 +31,7 @@ public class EventMapActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
     @Override
@@ -44,24 +42,6 @@ public class EventMapActivity extends AppCompatActivity implements OnMapReadyCal
         mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
         mGoogleMap.setOnMarkerClickListener(mOnMarkerClickListener);
         mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(DEFAULT_GEO_POINT, DEFAULT_ZOOM_LEVEL));
-
-        EventLoadTask task = new EventLoadTask(this);
-        task.setListener(new EventLoadTask.Listener() {
-            @Override
-            public void onLoad(List<EventData> list) {
-                if (list != null) {
-                    for (EventData data : list) {
-                        if (data.getLatitude() != 0.0 && data.getLongitude() != 0.0) {
-                            mGoogleMap.addMarker(new MarkerOptions()
-                                    .position(new LatLng(data.getLatitude(), data.getLongitude()))
-                                    .title(data.getStartDate())
-                                    .snippet(data.getTitle()));
-                        }
-                    }
-                }
-            }
-        });
-        task.execute();
     }
 
     private GoogleMap.OnMarkerClickListener mOnMarkerClickListener = new GoogleMap.OnMarkerClickListener() {

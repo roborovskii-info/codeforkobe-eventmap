@@ -16,16 +16,18 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name="org.codeforkobe.eventmap.ui.EventMapActivity">
+
+        </activity>
+        <activity
+                android:name="org.codeforkobe.eventmap.ui.EventDetailActivity"/>
+        <activity
+                android:name="org.codeforkobe.eventmap.ui.EventListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name="org.codeforkobe.eventmap.ui.EventDetailActivity"/>
-        <activity
-                android:name="org.codeforkobe.eventmap.ui.EventListActivity"/>
 
         <!-- for Google Maps Android API v2 -->
         <meta-data
