@@ -1,8 +1,8 @@
 package org.codeforkobe.eventmap.ui;
 
-import org.codefork.eventmap.model.Calendar;
-import org.codefork.eventmap.model.Event;
 import org.codeforkobe.eventmap.R;
+import org.codeforkobe.eventmap.model.Calendar;
+import org.codeforkobe.eventmap.model.Event;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

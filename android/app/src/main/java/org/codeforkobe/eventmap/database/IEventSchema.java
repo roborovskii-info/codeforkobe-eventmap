@@ -32,6 +32,8 @@ public interface IEventSchema {
 
     String COLUMN_TRANSPARENT = "transparent";
 
+    String COLUMN_CALENDAR_ID = "calendar_id";
+
     String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
             + COLUMN_EVENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_UID + " TEXT NOT NULL, "
@@ -44,13 +46,26 @@ public interface IEventSchema {
             + COLUMN_GEO_POINT + " TEXT, "
             + COLUMN_CONTACT + " TEXT, "
             + COLUMN_TRANSPARENT + " TEXT, "
+            + COLUMN_CALENDAR_ID + " INTEGER NOT NULL, "
             + "UNIQUE (" + COLUMN_UID + ") ON CONFLICT REPLACE"
             + ");";
 
-
-    String [] CREATE_INDEX = {
+    String[] CREATE_INDEX = {
             /* NOP */
     };
 
-    String[] COLUMNS = {};
+    String[] COLUMNS = {
+            COLUMN_EVENT_ID,
+            COLUMN_UID,
+            COLUMN_DATE_TIME_STAMP,
+            COLUMN_SUMMARY,
+            COLUMN_DESCRIPTION,
+            COLUMN_DATE_TIME_START,
+            COLUMN_DATE_TIME_END,
+            COLUMN_LOCATION,
+            COLUMN_GEO_POINT,
+            COLUMN_CONTACT,
+            COLUMN_TRANSPARENT,
+            COLUMN_CALENDAR_ID,
+    };
 }

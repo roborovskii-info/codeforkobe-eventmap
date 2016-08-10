@@ -1,9 +1,9 @@
 package org.codeforkobe.eventmap.ui;
 
-import org.codefork.eventmap.model.Calendar;
-import org.codefork.eventmap.model.Event;
-import org.codefork.eventmap.model.Property;
 import org.codeforkobe.eventmap.R;
+import org.codeforkobe.eventmap.model.Calendar;
+import org.codeforkobe.eventmap.model.Event;
+import org.codeforkobe.eventmap.model.Property;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -67,11 +67,11 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
                     default:
                         if (event == null) {
                             if (1 < values.length) {
-                                handleCalendar(values[0], values[1], calendar);
+                                handleCalendarNode(values[0], values[1], calendar);
                             }
                         } else {
                             if (1 < values.length) {
-                                handleEvent(values[0], values[1], event);
+                                handleEventNode(values[0], values[1], event);
                             }
                         }
                 }
@@ -82,7 +82,7 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
         return calendar;
     }
 
-    private void handleCalendar(String key, String value, Calendar calendar) {
+    private void handleCalendarNode(String key, String value, Calendar calendar) {
         if (key == null) {
             return;
         }
@@ -114,7 +114,7 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
         }
     }
 
-    private void handleEvent(String key, String value, Event event) {
+    private void handleEventNode(String key, String value, Event event) {
         if (key == null || event == null) {
             return;
         }
@@ -142,11 +142,6 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
                 break;
             case Property.GEO:
                 event.setGeoPoint(value);
-                String[] latLng = value.split(",");
-                if (1 < latLng.length) {
-                    event.setLatitude(Double.parseDouble(latLng[0]));
-                    event.setLongitude(Double.parseDouble(latLng[1]));
-                }
                 break;
             case Property.CONTACT:
                 event.setContact(value);

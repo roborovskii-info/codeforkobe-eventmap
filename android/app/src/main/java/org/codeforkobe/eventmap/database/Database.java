@@ -22,6 +22,7 @@ public class Database {
     private Context mContext;
 
     public static EventDao events;
+    public static CalendarDao calendars;
 
     public Database(Context context) {
         mContext = context;
@@ -31,6 +32,7 @@ public class Database {
         mOpenHelper = new DatabaseHelper(mContext);
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         events = new EventDao(db);
+
         return this;
     }
 
