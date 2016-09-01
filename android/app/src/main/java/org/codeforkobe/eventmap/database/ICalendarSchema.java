@@ -5,14 +5,14 @@ package org.codeforkobe.eventmap.database;
  */
 public interface ICalendarSchema {
 
-    String TABLE_NAME = "events";
+    String TABLE_NAME = "calendars";
 
     /**
      * プライマリキー。
      */
     String COLUMN_CALENDAR_ID = "calendar_id";
-
     String COLUMN_METHOD = "method";
+    String COLUMN_VERSION = "version";
     String COLUMN_PRODUCT_IDENTIFIER = "product_identifier";
     String COLUMN_CALENDAR_SCALE = "calendar_scale";
     String COLUMN_TIME_ZONE_IDENTIFIER = "time_zone_identifier";
@@ -23,6 +23,7 @@ public interface ICalendarSchema {
     String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
             + COLUMN_CALENDAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_METHOD + " TEXT NOT NULL, "
+            + COLUMN_VERSION + " TEXT NOT NULL, "
             + COLUMN_PRODUCT_IDENTIFIER + " TEXT NOT NULL, "
             + COLUMN_CALENDAR_SCALE + " TEXT NOT NULL, "
             + COLUMN_TIME_ZONE_IDENTIFIER + " TEXT NOT NULL, "
@@ -39,6 +40,7 @@ public interface ICalendarSchema {
     String[] COLUMNS = {
             COLUMN_CALENDAR_ID,
             COLUMN_METHOD,
+            COLUMN_VERSION,
             COLUMN_PRODUCT_IDENTIFIER,
             COLUMN_CALENDAR_SCALE,
             COLUMN_TIME_ZONE_IDENTIFIER,

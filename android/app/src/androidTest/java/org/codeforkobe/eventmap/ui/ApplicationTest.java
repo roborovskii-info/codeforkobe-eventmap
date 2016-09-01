@@ -1,4 +1,4 @@
-package com.codeforkobe.eventmap.ui;
+package org.codeforkobe.eventmap.ui;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

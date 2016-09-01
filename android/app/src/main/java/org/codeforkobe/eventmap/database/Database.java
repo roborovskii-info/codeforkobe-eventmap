@@ -32,7 +32,7 @@ public class Database {
         mOpenHelper = new DatabaseHelper(mContext);
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         events = new EventDao(db);
-
+        calendars = new CalendarDao(db);
         return this;
     }
 
@@ -51,7 +51,19 @@ public class Database {
         @Override
         public void onCreate(SQLiteDatabase db) {
             Log.d(LOG_TAG, "+ onCreate(SQLiteDatabase)");
+            /* テーブル生成 */
             db.execSQL(IEventSchema.CREATE_TABLE);
+            Log.d(LOG_TAG, "sql : " + IEventSchema.CREATE_TABLE);
+            db.execSQL(ICalendarSchema.CREATE_TABLE);
+            Log.d(LOG_TAG, "sql : " + ICalendarSchema.CREATE_TABLE);
+
+            /* インデックス生成 */
+            for (String index : IEventSchema.CREATE_INDEX) {
+                db.execSQL(index);
+            }
+            for (String index : ICalendarSchema.CREATE_INDEX) {
+                db.execSQL(index);
+            }
         }
 
         @Override

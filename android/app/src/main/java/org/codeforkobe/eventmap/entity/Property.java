@@ -1,4 +1,4 @@
-package org.codeforkobe.eventmap.model;
+package org.codeforkobe.eventmap.entity;
 
 /**
  * @author ISHIMARU Sohei on 2016/08/05.

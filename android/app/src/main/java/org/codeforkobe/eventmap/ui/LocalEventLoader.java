@@ -1,9 +1,9 @@
 package org.codeforkobe.eventmap.ui;
 
 import org.codeforkobe.eventmap.R;
-import org.codeforkobe.eventmap.model.Calendar;
-import org.codeforkobe.eventmap.model.Event;
-import org.codeforkobe.eventmap.model.Property;
+import org.codeforkobe.eventmap.entity.Calendar;
+import org.codeforkobe.eventmap.entity.Event;
+import org.codeforkobe.eventmap.entity.Property;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 /**
  * @author ISHIMARU Sohei on 2016/07/01.
  */
-public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
+public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
 
     private static final String LOG_TAG = "EventLoadTask";
 
@@ -23,7 +23,7 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
 
     private Context mContext;
 
-    public EventLoadTask(Context context) {
+    public LocalEventLoader(Context context) {
         mContext = context;
     }
 
@@ -48,11 +48,14 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
 
                 switch (values[0]) {
                     case Property.BEGIN:
+                        /* BEGIN:VEVENT */
                         if (Property.VEVENT.equals(values[1])) {
                             event = new Event();
                         }
                         break;
+
                     case Property.END:
+                        /* END:VEVENT */
                         if (Property.VEVENT.equals(values[1])) {
                             if (event != null) {
                                 try {
@@ -67,17 +70,18 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
                     default:
                         if (event == null) {
                             if (1 < values.length) {
-                                handleCalendarNode(values[0], values[1], calendar);
+                                int startIndex = line.indexOf(":") + 1;
+                                handleCalendarNode(values[0], line.substring(startIndex, line.length()), calendar);
                             }
                         } else {
                             if (1 < values.length) {
-                                handleEventNode(values[0], values[1], event);
+                                int startIndex = line.indexOf(":") + 1;
+                                handleEventNode(values[0], line.substring(startIndex, line.length()), event);
                             }
                         }
                 }
             }
         }
-
         scanner.close();
         return calendar;
     }
@@ -161,6 +165,7 @@ public class EventLoadTask extends AsyncTask<Void, Void, Calendar> {
     }
 
     public interface Listener {
+
         void onLoad(Calendar calendar);
     }
 }

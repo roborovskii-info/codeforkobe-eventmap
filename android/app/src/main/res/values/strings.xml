@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">EventMap</string>
     <string name="title_activity_event_map">EventMapActivity</string>
+    <string name="summary">イベント名</string>
+    <string name="description">概要</string>
+    <string name="event_start_date">開始時間</string>
+    <string name="event_end_date">終了時間</string>
+    <string name="location">開催場所</string>
+    <string name="contact">お問い合わせ先</string>
 </resources>
