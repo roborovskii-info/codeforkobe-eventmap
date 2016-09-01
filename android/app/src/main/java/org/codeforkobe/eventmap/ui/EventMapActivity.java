@@ -5,13 +5,19 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.codeforkobe.eventmap.R;
+import org.codeforkobe.eventmap.database.Database;
+import org.codeforkobe.eventmap.entity.Event;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import java.util.List;
 
 public class EventMapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -31,7 +37,6 @@ public class EventMapActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
     }
 
     @Override
@@ -42,6 +47,36 @@ public class EventMapActivity extends AppCompatActivity implements OnMapReadyCal
         mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
         mGoogleMap.setOnMarkerClickListener(mOnMarkerClickListener);
         mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(DEFAULT_GEO_POINT, DEFAULT_ZOOM_LEVEL));
+
+        mGoogleMap.setOnCameraIdleListener(mCameraIdleListener);
+
+       loadMarker();
+    }
+
+
+    private GoogleMap.OnCameraIdleListener mCameraIdleListener = new GoogleMap.OnCameraIdleListener() {
+
+        @Override
+        public void onCameraIdle() {
+            loadMarker();
+        }
+    };
+
+
+    private void loadMarker() { LatLngBounds bounds = mGoogleMap.getProjection().getVisibleRegion().latLngBounds;
+        List<Event> events = Database.events.fetchByBounds(
+                bounds.southwest.longitude,
+                bounds.northeast.latitude,
+                bounds.northeast.longitude,
+                bounds.southwest.latitude);
+
+        for (Event event : events) {
+            Log.d(LOG_TAG, "  Event : " + event.getLatitude() + " , " + event.getLongitude());
+            mGoogleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(event.getLatitude(), event.getLongitude()))
+                    .title(event.getSummary()));
+        }
+
     }
 
     private GoogleMap.OnMarkerClickListener mOnMarkerClickListener = new GoogleMap.OnMarkerClickListener() {

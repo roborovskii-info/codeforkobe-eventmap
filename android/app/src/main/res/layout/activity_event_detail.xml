@@ -7,105 +7,149 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
         tools:context="org.codeforkobe.eventmap.ui.EventDetailActivity">
-    <LinearLayout
+
+
+    <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+        <!--        <android.support.design.widget.CollapsingToolbarLayout
+                        android:id="@+id/toolbar_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fitsSystemWindows="true"
+                        app:contentScrim="?attr/colorPrimary"
+                        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title">-->
+        <include
+                layout="@layout/toolbar"
+                app:layout_collapseMode="pin"/>
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-        <android.support.design.widget.AppBarLayout
+            android:layout_below="@+id/toolbar"
+            android:padding="@dimen/common_spacing_m"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.AppBarOverlay">
-            <include
-                    layout="@layout/toolbar"
-                    app:layout_scrollFlags="scroll|enterAlways"/>
-        </android.support.design.widget.AppBarLayout>
-        <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <android.support.v7.widget.CardView
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardUseCompatPadding="true">
+
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/cardview_light_background"
-                    app:cardUseCompatPadding="true">
+                    android:padding="@dimen/common_spacing_l"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:id="@+id/text_summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.AppTheme.Headline"/>
+                <android.support.v4.widget.Space
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/common_spacing_m"/>
+                <TextView
+                        android:id="@+id/text_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.AppTheme.Subhead"
+                        android:autoLink="web"/>
+
+                <include layout="@layout/divider"/>
 
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/common_spacing_l"
-                        android:orientation="vertical">
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/summary"
-                            style="@style/TextAppearance.AppTheme.Label"/>
-                    <TextView
-                            android:id="@+id/text_summary"
+                        android:minHeight="?attr/listPreferredItemHeightSmall"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                    <android.support.v7.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"/>
-                    <include layout="@layout/divider"/>
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/description"
-                            style="@style/TextAppearance.AppTheme.Label"/>
-                    <TextView
-                            android:id="@+id/text_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:autoLink="web"/>
-                    <include layout="@layout/divider"/>
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/event_start_date"
-                            style="@style/TextAppearance.AppTheme.Label"/>
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@string/event_start_date"
+                            app:srcCompat="@drawable/ic_action_clock_start"/>
+                    <android.support.v4.widget.Space
+                            android:layout_width="@dimen/common_spacing_xl"
+                            android:layout_height="match_parent"/>
                     <TextView
                             android:id="@+id/text_event_start"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-                    <include layout="@layout/divider"/>
-                    <TextView
-                            android:layout_width="match_parent"
+                            style="@style/TextAppearance.AppTheme.Subhead"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="?attr/listPreferredItemHeightSmall"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/event_end_date"
-                            style="@style/TextAppearance.AppTheme.Label"/>
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@string/event_end_date"
+                            app:srcCompat="@drawable/ic_action_clock_end"/>
+                    <android.support.v4.widget.Space
+                            android:layout_width="@dimen/common_spacing_xl"
+                            android:layout_height="match_parent"/>
                     <TextView
                             android:id="@+id/text_event_end"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-                    <include layout="@layout/divider"/>
-                    <TextView
-                            android:layout_width="match_parent"
+                            style="@style/TextAppearance.AppTheme.Subhead"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="?attr/listPreferredItemHeightSmall"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/location"
-                            style="@style/TextAppearance.AppTheme.Label"/>
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@string/location"
+                            app:srcCompat="@drawable/ic_action_map_marker"/>
+                    <android.support.v4.widget.Space
+                            android:layout_width="@dimen/common_spacing_xl"
+                            android:layout_height="match_parent"/>
                     <TextView
                             android:id="@+id/text_location"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-                    <include layout="@layout/divider"/>
-                    <TextView
-                            android:layout_width="match_parent"
+                            style="@style/TextAppearance.AppTheme.Subhead"/>
+                </LinearLayout>
+                <include layout="@layout/divider"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="?attr/listPreferredItemHeightSmall"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                    <android.support.v7.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/contact"
-                            style="@style/TextAppearance.AppTheme.Label"/>
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@string/contact"
+                            app:srcCompat="@drawable/ic_action_phone_classic"/>
+                    <android.support.v4.widget.Space
+                            android:layout_width="@dimen/common_spacing_xl"
+                            android:layout_height="match_parent"/>
                     <TextView
                             android:id="@+id/text_contact"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:autoLink="all"
-                    />
+                            style="@style/TextAppearance.AppTheme.Subhead"/>
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
-        </ScrollView>
-    </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

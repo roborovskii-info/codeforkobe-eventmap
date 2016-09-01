@@ -49,11 +49,13 @@ public class Event implements Cloneable {
     private String mLocation;
 
     /**
-     * GEO : 場所の緯度経度。
+     * GEO : 場所の緯度
      *
      * `GEO:34.94686,135.1694`
      */
-    private String mGeoPoint;
+    private double mLatitude;
+
+    private double mLongitude;
 
     /**
      * CONTACT : イベントの問い合わせ先
@@ -141,32 +143,20 @@ public class Event implements Cloneable {
         this.mLocation = location;
     }
 
-    public String getGeoPoint() {
-        return mGeoPoint;
-    }
-
-    public void setGeoPoint(String geoPoint) {
-        this.mGeoPoint = geoPoint;
-    }
-
     public double getLatitude() {
-        if (mGeoPoint != null) {
-            String[] latLng = mGeoPoint.split(",");
-            if (1 < latLng.length) {
-                return Double.parseDouble(latLng[0]);
-            }
-        }
-        return 0.0;
+        return mLatitude;
+    }
+
+    public void setLatitude(double latitude) {
+        mLatitude = latitude;
     }
 
     public double getLongitude() {
-        if (mGeoPoint != null) {
-            String[] latLng = mGeoPoint.split(",");
-            if (1 < latLng.length) {
-                return Double.parseDouble(latLng[1]);
-            }
-        }
-        return 0.0;
+        return mLongitude;
+    }
+
+    public void setLongitude(double longitude) {
+        mLongitude = longitude;
     }
 
     public String getContact() {

@@ -4,6 +4,7 @@ import org.codeforkobe.eventmap.entity.Event;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -33,7 +34,8 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         event.setDateTimeStart(cursor.getString(cursor.getColumnIndex(COLUMN_DATE_TIME_START)));
         event.setDateTimeEnd(cursor.getString(cursor.getColumnIndex(COLUMN_DATE_TIME_END)));
         event.setLocation(cursor.getString(cursor.getColumnIndex(COLUMN_LOCATION)));
-        event.setGeoPoint(cursor.getString(cursor.getColumnIndex(COLUMN_GEO_POINT)));
+        event.setLatitude(cursor.getDouble(cursor.getColumnIndex(COLUMN_LATITUDE)));
+        event.setLongitude(cursor.getDouble(cursor.getColumnIndex(COLUMN_LONGITUDE)));
         event.setContact(cursor.getString(cursor.getColumnIndex(COLUMN_CONTACT)));
         event.setTransparent(cursor.getString(cursor.getColumnIndex(COLUMN_TRANSPARENT)));
         return event;
@@ -56,7 +58,8 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         values.put(COLUMN_DATE_TIME_START, event.getDateTimeStart());
         values.put(COLUMN_DATE_TIME_END, event.getDateTimeEnd());
         values.put(COLUMN_LOCATION, event.getLocation());
-        values.put(COLUMN_GEO_POINT, event.getGeoPoint());
+        values.put(COLUMN_LATITUDE, event.getLatitude());
+        values.put(COLUMN_LONGITUDE, event.getLongitude());
         values.put(COLUMN_CONTACT, event.getContact());
         values.put(COLUMN_TRANSPARENT, event.getTransparent());
         return values;
@@ -121,6 +124,43 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         }
         return events;
     }
+
+    public List<Event> fetchByBounds(double west, double north, double east, double south) {
+        double lat1 = Math.min(north, south);
+        double lat2 = Math.max(north, south);
+        double lng1 = Math.min(west, east);
+        double lng2 = Math.max(west, east);
+
+        String where = COLUMN_LATITUDE + " BETWEEN ? AND ?"
+                + " AND " + COLUMN_LONGITUDE + " BETWEEN ? AND ?"
+                + " AND " + COLUMN_LATITUDE + " != 0"
+                + " AND " + COLUMN_LONGITUDE + " != 0";
+        String[] whereArgs = {
+                Double.toString(lat1),
+                Double.toString(lat2),
+                Double.toString(lng1),
+                Double.toString(lng2),
+        };
+        // adb shell run-as org.codeforkobe.eventmap cat /data/data/org.codeforkobe.eventmap/databases/event.sqlite | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/event.sqlite
+        List<Event> events = new ArrayList<>();
+        Cursor cursor = null;
+        try {
+            cursor = super.query(TABLE_NAME, COLUMNS, where, whereArgs, null);
+            DatabaseUtils.dumpCursor(cursor);
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    Event calendar = cursorToEntity(cursor);
+                    events.add(calendar);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return events;
+    }
+
 
     @Override
     public long add(Event event) {

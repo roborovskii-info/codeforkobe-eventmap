@@ -26,7 +26,9 @@ public interface IEventSchema {
 
     String COLUMN_LOCATION = "location";
 
-    String COLUMN_GEO_POINT = "geo_point";
+    String COLUMN_LATITUDE = "latitude";
+
+    String COLUMN_LONGITUDE = "longitude";
 
     String COLUMN_CONTACT = "contact";
 
@@ -43,7 +45,8 @@ public interface IEventSchema {
             + COLUMN_DATE_TIME_START + " TEXT NOT NULL, "
             + COLUMN_DATE_TIME_END + " TEXT NOT NULL, "
             + COLUMN_LOCATION + " TEXT, "
-            + COLUMN_GEO_POINT + " TEXT, "
+            + COLUMN_LATITUDE + " REAL, "
+            + COLUMN_LONGITUDE + " REAL, "
             + COLUMN_CONTACT + " TEXT, "
             + COLUMN_TRANSPARENT + " TEXT, "
             + COLUMN_CALENDAR_ID + " INTEGER NOT NULL, "
@@ -63,7 +66,8 @@ public interface IEventSchema {
             COLUMN_DATE_TIME_START,
             COLUMN_DATE_TIME_END,
             COLUMN_LOCATION,
-            COLUMN_GEO_POINT,
+            COLUMN_LATITUDE,
+            COLUMN_LONGITUDE,
             COLUMN_CONTACT,
             COLUMN_TRANSPARENT,
             COLUMN_CALENDAR_ID,

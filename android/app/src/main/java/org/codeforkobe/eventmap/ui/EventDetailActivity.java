@@ -53,6 +53,7 @@ public class EventDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
+
     }
 
     @Override
@@ -82,6 +83,8 @@ public class EventDetailActivity extends AppCompatActivity {
 
             mLocationView.setText(mEvent.getLocation());
             mContactView.setText(mEvent.getContact());
+
+            setTitle(mEvent.getSummary());
         }
     }
 }

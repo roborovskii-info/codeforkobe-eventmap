@@ -14,6 +14,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import java.util.List;
@@ -49,8 +51,28 @@ public class EventListActivity extends AppCompatActivity {
         LocalEventLoader task = new LocalEventLoader(this);
         task.setListener(mEventLoadListener);
         task.execute();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_event_list, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        switch (itemId) {
+            case R.id.menu_map:
+                displayMap();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void displayMap() {
+        Intent intent = new Intent(this, EventMapActivity.class);
+        startActivity(intent);
     }
 
     private LocalEventLoader.Listener mEventLoadListener = new LocalEventLoader.Listener() {

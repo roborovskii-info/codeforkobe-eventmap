@@ -13,7 +13,7 @@ public class Database {
 
     private static final String LOG_TAG = "Database";
 
-    private static final String DATABASE_NAME = "twicomi.sqlite";
+    private static final String DATABASE_NAME = "event.sqlite";
 
     private static final int DATABASE_VERSION = 1;
 

@@ -145,7 +145,11 @@ public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
                 event.setLocation(value);
                 break;
             case Property.GEO:
-                event.setGeoPoint(value);
+                String[] latLng = value.split(";");
+                if (1 < latLng.length) {
+                    event.setLatitude(Double.parseDouble(latLng[0]));
+                    event.setLongitude(Double.parseDouble(latLng[1]));
+                }
                 break;
             case Property.CONTACT:
                 event.setContact(value);
