@@ -14,18 +14,21 @@
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:supportsRtl="true"
+            android:name=".EventMap"
             android:theme="@style/AppTheme">
-        <activity android:name="org.codeforkobe.eventmap.ui.EventMapActivity">
+        <activity android:name=".ui.EventMapActivity">
+
+        </activity>
+        <activity
+                android:name=".ui.EventDetailActivity"/>
+        <activity
+                android:name=".ui.EventListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-                android:name="org.codeforkobe.eventmap.ui.EventDetailActivity"/>
-        <activity
-                android:name="org.codeforkobe.eventmap.ui.EventListActivity"/>
 
         <!-- for Google Maps Android API v2 -->
         <meta-data

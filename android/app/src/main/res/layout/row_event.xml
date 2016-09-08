@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/container_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_spacing_xs"
+        android:layout_marginLeft="@dimen/common_spacing_s"
+        android:layout_marginRight="@dimen/common_spacing_s"
+        android:layout_marginTop="@dimen/common_spacing_xs"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardUseCompatPadding="true">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/common_spacing_m">
+        <TextView
+                android:id="@+id/text_event_icon"
+                android:layout_width="@dimen/event_icon_size"
+                android:layout_height="@dimen/event_icon_size"
+                android:layout_margin="@dimen/common_spacing_m"
+                android:gravity="center"
+                android:singleLine="true"
+                android:background="@drawable/circle"
+                android:textAppearance="?android:attr/textAppearanceLargeInverse"
+                android:textStyle="bold"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/common_spacing_s"
+                android:paddingBottom="@dimen/common_spacing_s"
+                android:paddingLeft="@dimen/common_spacing_m"
+                android:paddingRight="@dimen/common_spacing_m"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:ellipsize="end"
+                    android:maxLines="2"/>
+
+            <TextView
+                    android:id="@+id/text_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
