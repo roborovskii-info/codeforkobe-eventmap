@@ -5,8 +5,11 @@ import org.codeforkobe.eventmap.entity.Event;
 import org.codeforkobe.eventmap.util.DateTimeUtils;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +27,11 @@ import butterknife.ButterKnife;
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.ViewHolder> {
 
     private Context mContext;
+
     private LayoutInflater mLayoutInflater;
+
     private List<Event> mDataList;
+
     private OnItemClickListener mClickListener;
 
     public EventListAdapter(Context context, OnItemClickListener listener) {
@@ -56,17 +62,24 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
         Event event = mDataList.get(position);
         if (event != null) {
 
-            holder.titleView.setText(event.getSummary());
+            String title = event.getSummary();
+            holder.titleView.setText(title);
             holder.summaryView.setText(DateTimeUtils.formatDateTime(mContext, event.getDateTimeStart()));
+            holder.iconView.setText(event.getSummary().substring(0, 1));
+
+            int color = holder.getColor(mContext, title);
+            Log.d("Color ", "Color : #" + Integer.toHexString(color));
+            holder.iconView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(mClickListener != null) {
+                    if (mClickListener != null) {
                         mClickListener.onItemClicked(v, position);
                     }
                 }
             });
+
         }
     }
 
@@ -79,15 +92,48 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
         }
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.text_title)
         TextView titleView;
+
         @BindView(R.id.text_summary)
         TextView summaryView;
+
+        @BindView(R.id.text_event_icon)
+        TextView iconView;
+
+        int[] colors = {
+                R.color.red_500,
+                R.color.pink_500,
+                R.color.purple_500,
+                R.color.deep_purple_500,
+                R.color.indigo_500,
+                R.color.blue_500,
+                R.color.light_blue_500,
+                R.color.cyan_500,
+                R.color.teal_500,
+                R.color.green_500,
+                R.color.light_green_500,
+                R.color.lime_500,
+                R.color.amber_500,
+                R.color.orange_500,
+                R.color.deep_orange_500,
+                R.color.brown_500,
+        };
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+
+        int getColor(Context context, String title) {
+            if (TextUtils.isEmpty(title)) {
+                return context.getResources().getColor(colors[0]);
+            }
+            int codeAt = title.codePointAt(0);
+            int index =  codeAt % colors.length;
+            return context.getResources().getColor(colors[index]);
         }
     }
 }

@@ -15,7 +15,9 @@
 
     <style name="TextAppearance.AppTheme.Subhead" parent="TextAppearance.AppCompat.Subhead"/>
     <style name="TextAppearance.AppTheme.Headline" parent="TextAppearance.AppCompat.Headline" />
-    <style name="TextAppearance.AppTheme.Body1" parent="TextAppearance.AppCompat.Body1" />
+    <style name="TextAppearance.AppTheme.Body1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
     <style name="TextAppearance.AppTheme.Body2" parent="TextAppearance.AppCompat.Body2" />
     <style name="TextAppearance.AppTheme.Title" parent="TextAppearance.AppCompat.Title" />
 </resources>

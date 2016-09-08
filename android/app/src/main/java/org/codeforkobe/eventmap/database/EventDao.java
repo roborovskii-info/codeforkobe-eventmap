@@ -43,7 +43,7 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
 
     @Override
     protected ContentValues entityToContentValues(Event event) {
-        if (event == null){
+        if (event == null) {
             return null;
         }
         ContentValues values = new ContentValues();
@@ -125,6 +125,15 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         return events;
     }
 
+    /**
+     * 指定された範囲に含まれるイベントのデータを返す。
+     *
+     * @param west  西側の経度
+     * @param north 北側の緯度
+     * @param east  東側の経度
+     * @param south 南側の緯度
+     */
+
     public List<Event> fetchByBounds(double west, double north, double east, double south) {
         double lat1 = Math.min(north, south);
         double lat2 = Math.max(north, south);
@@ -141,7 +150,7 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
                 Double.toString(lng1),
                 Double.toString(lng2),
         };
-        // adb shell run-as org.codeforkobe.eventmap cat /data/data/org.codeforkobe.eventmap/databases/event.sqlite | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/event.sqlite
+
         List<Event> events = new ArrayList<>();
         Cursor cursor = null;
         try {
@@ -160,7 +169,6 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         }
         return events;
     }
-
 
     @Override
     public long add(Event event) {

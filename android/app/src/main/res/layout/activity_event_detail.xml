@@ -57,7 +57,7 @@
                         android:id="@+id/text_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextAppearance.AppTheme.Subhead"
+                        style="@style/TextAppearance.AppTheme.Body1"
                         android:autoLink="web"/>
 
                 <include layout="@layout/divider"/>
@@ -71,7 +71,7 @@
                     <android.support.v7.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             android:contentDescription="@string/event_start_date"
                             app:srcCompat="@drawable/ic_action_clock_start"/>
                     <android.support.v4.widget.Space
@@ -92,7 +92,7 @@
                     <android.support.v7.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             android:contentDescription="@string/event_end_date"
                             app:srcCompat="@drawable/ic_action_clock_end"/>
                     <android.support.v4.widget.Space
@@ -115,7 +115,7 @@
                     <android.support.v7.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             android:contentDescription="@string/location"
                             app:srcCompat="@drawable/ic_action_map_marker"/>
                     <android.support.v4.widget.Space
@@ -126,6 +126,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             style="@style/TextAppearance.AppTheme.Subhead"/>
+                    <android.support.v4.widget.Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+                    <android.support.v7.widget.AppCompatImageButton
+                            android:id="@+id/button_map"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="?attr/buttonBarButtonStyle"
+                            android:tint="@color/colorAccent"
+                            android:contentDescription="@string/location"
+                            app:srcCompat="@drawable/ic_action_google_maps"/>
                 </LinearLayout>
                 <include layout="@layout/divider"/>
                 <LinearLayout
@@ -137,7 +149,7 @@
                     <android.support.v7.widget.AppCompatImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:tint="@color/colorAccent"
+                            android:tint="@color/colorPrimary"
                             android:contentDescription="@string/contact"
                             app:srcCompat="@drawable/ic_action_phone_classic"/>
                     <android.support.v4.widget.Space

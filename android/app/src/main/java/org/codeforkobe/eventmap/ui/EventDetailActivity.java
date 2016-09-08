@@ -5,13 +5,16 @@ import org.codeforkobe.eventmap.database.Database;
 import org.codeforkobe.eventmap.entity.Event;
 import org.codeforkobe.eventmap.util.DateTimeUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * イベントの詳細な情報を表示するためのActivity。
@@ -42,6 +45,9 @@ public class EventDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.text_contact)
     TextView mContactView;
+
+    @BindView(R.id.button_map)
+    ImageButton mMapButton;
 
     private Event mEvent;
 
@@ -85,6 +91,19 @@ public class EventDetailActivity extends AppCompatActivity {
             mContactView.setText(mEvent.getContact());
 
             setTitle(mEvent.getSummary());
+
+            if (mEvent.getLatitude() != 0.0 && mEvent.getLongitude() != 0.0) {
+                mMapButton.setEnabled(true);
+            } else {
+                mMapButton.setEnabled(false);
+            }
         }
+    }
+
+    @OnClick(R.id.button_map)
+    void onMapButtonClicked() {
+        Intent intent = new Intent(this, EventMapActivity.class);
+        intent.putExtra(EventMapActivity.EXTRA_EVENT_ID, mEvent.getEventId());
+        startActivity(intent);
     }
 }
