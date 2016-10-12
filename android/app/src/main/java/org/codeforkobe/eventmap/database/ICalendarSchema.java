@@ -1,6 +1,8 @@
 package org.codeforkobe.eventmap.database;
 
 /**
+ * カレンダーテーブルの定義など
+ *
  * @author ISHIMARU Sohei on 2016/08/05.
  */
 public interface ICalendarSchema {

@@ -22,6 +22,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
+ * イベントをリストに表示するためのアダプタ
+ *
  * @author ISHIMARU Sohei on 2016/08/31.
  */
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.ViewHolder> {
@@ -66,9 +68,8 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
             holder.titleView.setText(title);
             holder.summaryView.setText(DateTimeUtils.formatDateTime(mContext, event.getDateTimeStart()));
             holder.iconView.setText(event.getSummary().substring(0, 1));
-
+            /* 先頭の文字から●の背景色を決定 */
             int color = holder.getColor(mContext, title);
-            Log.d("Color ", "Color : #" + Integer.toHexString(color));
             holder.iconView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {

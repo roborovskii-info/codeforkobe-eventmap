@@ -22,7 +22,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
+/**
+ * イベントのリストを表示するためのActivity。
+ *
+ * @author ISHIMARU Sohei
+ */
 public class EventListActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "EventListActivity";
