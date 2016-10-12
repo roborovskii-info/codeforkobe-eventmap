@@ -155,7 +155,7 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         Cursor cursor = null;
         try {
             cursor = super.query(TABLE_NAME, COLUMNS, where, whereArgs, null);
-            DatabaseUtils.dumpCursor(cursor);
+//            DatabaseUtils.dumpCursor(cursor);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     Event calendar = cursorToEntity(cursor);
