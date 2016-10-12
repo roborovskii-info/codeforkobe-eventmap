@@ -13,6 +13,8 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 /**
+ * icsファイルをパースする。今のところ固定のファイルを読み込むだけ。
+ *
  * @author ISHIMARU Sohei on 2016/07/01.
  */
 public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {

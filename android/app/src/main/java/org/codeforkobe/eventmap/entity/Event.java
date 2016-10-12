@@ -181,6 +181,17 @@ public class Event implements Cloneable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        } else if (!(obj instanceof Event)){
+            return false;
+        }
+        Event event = (Event) obj;
+        return event.getUid().equals(mUid);
+    }
+
+    @Override
     public Event clone() throws CloneNotSupportedException {
         return (Event) super.clone();
     }

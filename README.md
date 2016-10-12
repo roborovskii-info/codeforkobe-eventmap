@@ -11,3 +11,9 @@ http://www.city.sanda.lg.jp/cgi-bin/event_cal/cal_month.cgi?year=2016&month=06
 
 * 全国地方公共団体コード
 http://www.soumu.go.jp/denshijiti/code.html
+
+* 三田市ロゴ
+
+https://commons.wikimedia.org/wiki/File:Symbol_of_Sanda,_Hyogo.svg
+
+  By Kzaral (original raster), Ch1902 and me (Modification of File:Flag of Sanda, Hyogo.svg) [Public domain], via Wikimedia Commons

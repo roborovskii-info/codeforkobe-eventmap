@@ -1,6 +1,8 @@
 package org.codeforkobe.eventmap.database;
 
 /**
+ * eventsテーブルの定義など
+ *
  * @author ISHIMARU Sohei on 2016/08/05.
  */
 public interface IEventSchema {
