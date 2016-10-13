@@ -30,9 +30,12 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:recyclerview-v7:24.2.1'
     compile 'com.android.support:cardview-v7:24.2.1'
-    compile 'com.google.android.gms:play-services-maps:9.4.0'
+    compile 'com.google.android.gms:play-services-maps:9.6.1'
 
-    /* butter knife */
+    /* OkHttp */
+    compile 'com.squareup.okhttp3:okhttp:3.3.1'
+
+    /* Butter knife */
     compile 'com.jakewharton:butterknife:8.1.0'
     apt 'com.jakewharton:butterknife-compiler:8.1.0'
 }
