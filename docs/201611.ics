@@ -16,8 +16,8 @@ TZNAME:JST
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:SANDAEVENTDwcP1
-DTSTAMP:20161009T170153
+UID:SANDAEVENTKeQiS
+DTSTAMP:20161110T16:21:39
 SUMMARY:就労チャレンジ体験
 DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
 DTSTART:20161101T090000
@@ -28,8 +28,32 @@ CONTACT:三田市および近隣市に所在する事業所
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTQV0KJ
-DTSTAMP:20161009T170154
+UID:SANDAEVENTFKLBd
+DTSTAMP:20161110T16:21:39
+SUMMARY:古三田青磁三田焼保存会展
+DESCRIPTION:古三田焼と他窯の窯、関連展  http://www.city.sanda.lg.jp/fureai/20160701kosanndseiji.html
+DTSTART:20161101T090000
+DTEND:20161101T170000
+LOCATION:三田市四ツ辻1129番地の1
+GEO:34.94686;135.1694
+CONTACT:ふれあいと創造の里「陶芸館」2階展示室 079-568-4340
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:SANDAEVENTKWfm3
+DTSTAMP:20161110T16:21:39
+SUMMARY:8月駒ケ谷運動公園子育て交流ひろば  「保育ネットワーク・ミルク」
+DESCRIPTION:駒ケ谷運動公園体育館の講座室で毎週3日開設している、子育て中の親子が気軽に立ち寄り、自由に遊ぶことができるひろばです。おもちゃで自由に遊べるほか、子育て支援に関する講座や催し、子育てについての相談や情報提供なども行っています。  http://www.city.sanda.lg.jp/kodomo/komagatani/28nenndo/event/08miruku01.html
+DTSTART:20161101T093000
+DTEND:20161101T123000
+LOCATION:ゆりのき台1-44
+GEO:34.911149;135.180095
+CONTACT:駒ケ谷運動公園体育館 講座室
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:SANDAEVENTgdw0k
+DTSTAMP:20161110T16:21:39
 SUMMARY:就労チャレンジ体験
 DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
 DTSTART:20161102T090000
@@ -40,8 +64,32 @@ CONTACT:三田市および近隣市に所在する事業所
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTp4MsF
-DTSTAMP:20161009T170154
+UID:SANDAEVENTOVTlX
+DTSTAMP:20161110T16:21:39
+SUMMARY:古三田青磁三田焼保存会展
+DESCRIPTION:古三田焼と他窯の窯、関連展  http://www.city.sanda.lg.jp/fureai/20160701kosanndseiji.html
+DTSTART:20161102T090000
+DTEND:20161102T170000
+LOCATION:三田市四ツ辻1129番地の1
+GEO:34.94686;135.1694
+CONTACT:ふれあいと創造の里「陶芸館」2階展示室 079-568-4340
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:SANDAEVENT6N2IK
+DTSTAMP:20161105T21:23:54
+SUMMARY:平成28年8 月2日（火曜日）中央公民館オープンセミナー「落語一題～生活に笑いを」
+DESCRIPTION:落語一題～生活に笑いを  http://www.city.sanda.lg.jp/gakushuu/201611rakugo.html
+DTSTART:20161102T100000
+DTEND:20161102T113000
+LOCATION:三田市川除675
+GEO:;
+CONTACT:三田市総合福祉保健センター 多目的ホール 079-559-5700
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+UID:SANDAEVENT8KMaZ
+DTSTAMP:20161105T21:23:54
 SUMMARY:就労チャレンジ体験
 DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
 DTSTART:20161103T090000
@@ -52,351 +100,87 @@ CONTACT:三田市および近隣市に所在する事業所
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTY3KYf
-DTSTAMP:20161009T170154
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161104T090000
-DTEND:20161104T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTMdN8v
+DTSTAMP:20161105T21:23:54
+SUMMARY:古三田青磁三田焼保存会展
+DESCRIPTION:古三田焼と他窯の窯、関連展  http://www.city.sanda.lg.jp/fureai/20160701kosanndseiji.html
+DTSTART:20161103T090000
+DTEND:20161103T170000
+LOCATION:三田市四ツ辻1129番地の1
+GEO:34.94686;135.1694
+CONTACT:ふれあいと創造の里「陶芸館」2階展示室 079-568-4340
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTvsuLX
-DTSTAMP:20161009T170155
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161105T090000
-DTEND:20161105T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTwvU9y
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月地域子育てステーション 「認定こども園 北摂学園幼稚園」
+DESCRIPTION:在宅の子育てをしている親と子が一緒に遊んだり、気軽に子育て相談ができる場所を提供しています。  http://www.city.sanda.lg.jp/kodomo/station/2016/hokugaku0803.html
+DTSTART:20161103T100000
+DTEND:20161103T120000
+LOCATION:三田市学園7-1-3
+GEO:34.905112;135.163731
+CONTACT:認定こども園 北摂学園幼稚園 565-8585
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTUDHAL
-DTSTAMP:20161009T170155
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161106T090000
-DTEND:20161106T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTftOSa
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月駅前子育て交流ひろば 「子育て相談日」
+DESCRIPTION:駅前子育て交流ひろばでは、毎週1回、子育て相談を実施しています。  http://www.city.sanda.lg.jp/kodomo/ekimae/28nendo/event/08souhoiku03.html
+DTSTART:20161103T140000
+DTEND:20161103T160000
+LOCATION:三田市駅前町2番1号 三田駅前一番館（キッピーモール）6階
+GEO:34.888099;135.228674
+CONTACT:駅前子育て交流ひろば 556-5230
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTU1TyF
-DTSTAMP:20161009T170155
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161107T090000
-DTEND:20161107T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTyU0XD
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月子育て交流ひろば 【ベビーサロン（0～11か月まで）】
+DESCRIPTION:0～11か月のお子さんと保護者の方へ 「楽しく交流しましょう！」子育てのワンポイントアドバイス、ふれあい遊び、読み聞かせなどもあります。  http://www.city.sanda.lg.jp/kouryuu/kosodateyouryuuhiroba28nendo/event/baby0803.html
+DTSTART:20161103T103000
+DTEND:20161103T113000
+LOCATION:三田市弥生が丘1-1-2
+GEO:34.88528;135.2016
+CONTACT:三田市多世代交流館 子育て交流ひろば 子どもルーム 079-562-8421
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTjOrsY
-DTSTAMP:20161009T170156
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161108T090000
-DTEND:20161108T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTh23ei
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月子育て交流ひろば 【絵本の読み聞かせ（8月3日開催）】
+DESCRIPTION:読み聞かせグループ「わらべ」が、絵本の読み聞かせや手遊びをします。  http://www.city.sanda.lg.jp/kouryuu/kosodateyouryuuhiroba28nendo/event/yomikikase0803.html
+DTSTART:20161103T110000
+DTEND:20161103T112500
+LOCATION:三田市弥生が丘1-1-2
+GEO:34.88528;135.2016
+CONTACT:三田市多世代交流館 子育て交流ひろば フリースペース 079-562-8421
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTGFxYB
-DTSTAMP:20161009T170156
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161109T090000
-DTEND:20161109T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTYIxuY
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月駒ケ谷運動公園子育て交流ひろば 「三田市シルバー人材センター」
+DESCRIPTION:駒ケ谷運動公園体育館の講座室で毎週3日開設している、子育て中の親子が気軽に立ち寄り、自由に遊ぶことができるひろばです。おもちゃで自由に遊べるほか、子育て支援に関する講座や催し、子育てについての相談や情報提供なども行っています。  http://www.city.sanda.lg.jp/kodomo/komagatani/28nenndo/event/08siruba03.html
+DTSTART:20161103T093000
+DTEND:20161103T123000
+LOCATION:ゆりのき台1-44
+GEO:34.911149;135.180095
+CONTACT:駒ケ谷運動公園体育館 講座室
 TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
-UID:SANDAEVENTiQwEN
-DTSTAMP:20161009T170156
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161110T090000
-DTEND:20161110T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTWJjxl
-DTSTAMP:20161009T170156
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161111T090000
-DTEND:20161111T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT91FCI
-DTSTAMP:20161009T170157
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161112T090000
-DTEND:20161112T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTxc7tk
-DTSTAMP:20161009T170157
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161113T090000
-DTEND:20161113T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT7wwbn
-DTSTAMP:20161009T170157
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161114T090000
-DTEND:20161114T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTtkPyF
-DTSTAMP:20161009T170158
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161115T090000
-DTEND:20161115T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTCrbAB
-DTSTAMP:20161009T170158
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161116T090000
-DTEND:20161116T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTwhsB6
-DTSTAMP:20161009T170158
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161117T090000
-DTEND:20161117T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT4Khu2
-DTSTAMP:20161009T170158
-SUMMARY:人権を学ぶ啓発講座（身近で見たことありますか？盲導犬）
-DESCRIPTION:  http://www.city.sanda.lg.jp/jinken/281217ibentokarenda-.html
-DTSTART:20161117T100000
-DTEND:20161117T120000
-LOCATION:三田市けやき台1丁目1番地1
-GEO:;
-CONTACT:ウッディタウン市民センター(視聴覚室) 079-565-2443
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTMLmWm
-DTSTAMP:20161009T170159
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161118T090000
-DTEND:20161118T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT54BJy
-DTSTAMP:20161009T170159
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161119T090000
-DTEND:20161119T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTgo4ek
-DTSTAMP:20161009T170159
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161120T090000
-DTEND:20161120T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTX7OyR
-DTSTAMP:20161009T170200
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161121T090000
-DTEND:20161121T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTiTGpd
-DTSTAMP:20161009T170200
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161122T090000
-DTEND:20161122T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTDfxkZ
-DTSTAMP:20161009T170200
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161123T090000
-DTEND:20161123T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTw331f
-DTSTAMP:20161009T170200
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161124T090000
-DTEND:20161124T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTDVRe1
-DTSTAMP:20161009T170201
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161125T090000
-DTEND:20161125T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTNQYtE
-DTSTAMP:20161009T170201
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161126T090000
-DTEND:20161126T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTRNmKX
-DTSTAMP:20161009T170201
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161127T090000
-DTEND:20161127T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTtRV53
-DTSTAMP:20161009T170202
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161128T090000
-DTEND:20161128T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENTaLgQJ
-DTSTAMP:20161009T170202
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161129T090000
-DTEND:20161129T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT3g2Da
-DTSTAMP:20161009T170202
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161130T090000
-DTEND:20161130T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-UID:SANDAEVENT7R0tx
-DTSTAMP:20161009T170202
-SUMMARY:就労チャレンジ体験
-DESCRIPTION:若年無業者が受入事業所で一定期間の就労を体験し、「就職」に向けて新たな可能性を見出すプログラムです。  http://www.city.sanda.lg.jp/shoukou_kankou/20150213firststep.html
-DTSTART:20161131T090000
-DTEND:20161131T170000
-LOCATION:
-GEO:;
-CONTACT:三田市および近隣市に所在する事業所
+UID:SANDAEVENTzJgzb
+DTSTAMP:20161105T21:23:54
+SUMMARY:8月シニア・ユースひろば 【Café de ふらっと（8月3日）】
+DESCRIPTION:障がい福祉サービス施設「三田わくわく村」がカフェを開催！  http://www.city.sanda.lg.jp/kouryuu/siniayu-suhiroba28nendo/event/cafe0803.html
+DTSTART:20161103T110000
+DTEND:20161103T140000
+LOCATION:三田市弥生が丘1-1-2
+GEO:34.88534;135.2016
+CONTACT:三田市多世代交流館 シニア・ユースひろば フリースペース 079-562-8423
 TRANSP:OPAQUE
 END:VEVENT
 END:VCALENDAR

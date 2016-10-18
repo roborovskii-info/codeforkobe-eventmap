@@ -1,4 +1,4 @@
-package org.codeforkobe.eventmap.ui;
+package org.codeforkobe.eventmap.ics;
 
 import org.codeforkobe.eventmap.R;
 import org.codeforkobe.eventmap.entity.Calendar;
@@ -9,6 +9,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -17,7 +20,7 @@ import java.util.Scanner;
  *
  * @author ISHIMARU Sohei on 2016/07/01.
  */
-public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
+public class EventParseTask extends AsyncTask<String, Void, Calendar> {
 
     private static final String LOG_TAG = "EventLoadTask";
 
@@ -25,7 +28,7 @@ public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
 
     private Context mContext;
 
-    public LocalEventLoader(Context context) {
+    public EventParseTask(Context context) {
         mContext = context;
     }
 
@@ -34,57 +37,66 @@ public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
     }
 
     @Override
-    protected Calendar doInBackground(Void... params) {
+    protected Calendar doInBackground(String... params) {
         Log.d(LOG_TAG, "# doInBackground(Void...)");
+        if (params == null || params.length == 0) {
+            return null;
+        }
+
         Calendar calendar = new Calendar();
-        InputStream is = mContext.getResources().openRawResource(R.raw.sanda_event);
+        File file = new File(params[0]);
+
         /* ical4j大きすぎる...汚いけど自前で... */
 
         /* icsファイルのパース処理 */
-        Scanner scanner = new Scanner(is);
-        Event event = null;
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            if (line != null && 0 < line.length() && line.contains(":")) {
-                String[] values = line.split(":");
+        try {
+            Scanner scanner = new Scanner(new FileInputStream(file));
+            Event event = null;
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                if (line != null && 0 < line.length() && line.contains(":")) {
+                    String[] values = line.split(":");
 
-                switch (values[0]) {
-                    case Property.BEGIN:
+                    switch (values[0]) {
+                        case Property.BEGIN:
                         /* BEGIN:VEVENT */
-                        if (Property.VEVENT.equals(values[1])) {
-                            event = new Event();
-                        }
-                        break;
+                            if (Property.VEVENT.equals(values[1])) {
+                                event = new Event();
+                            }
+                            break;
 
-                    case Property.END:
+                        case Property.END:
                         /* END:VEVENT */
-                        if (Property.VEVENT.equals(values[1])) {
-                            if (event != null) {
-                                try {
-                                    calendar.addEvent(event.clone());
-                                } catch (CloneNotSupportedException e) {
-                                    e.printStackTrace();
+                            if (Property.VEVENT.equals(values[1])) {
+                                if (event != null) {
+                                    try {
+                                        calendar.addEvent(event.clone());
+                                    } catch (CloneNotSupportedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                                event = null;
+                            }
+                            break;
+                        default:
+                            if (event == null) {
+                                if (1 < values.length) {
+                                    int startIndex = line.indexOf(":") + 1;
+                                    handleCalendarNode(values[0], line.substring(startIndex, line.length()), calendar);
+                                }
+                            } else {
+                                if (1 < values.length) {
+                                    int startIndex = line.indexOf(":") + 1;
+                                    handleEventNode(values[0], line.substring(startIndex, line.length()), event);
                                 }
                             }
-                            event = null;
-                        }
-                        break;
-                    default:
-                        if (event == null) {
-                            if (1 < values.length) {
-                                int startIndex = line.indexOf(":") + 1;
-                                handleCalendarNode(values[0], line.substring(startIndex, line.length()), calendar);
-                            }
-                        } else {
-                            if (1 < values.length) {
-                                int startIndex = line.indexOf(":") + 1;
-                                handleEventNode(values[0], line.substring(startIndex, line.length()), event);
-                            }
-                        }
+                    }
                 }
             }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        scanner.close();
         return calendar;
     }
 
@@ -171,7 +183,6 @@ public class LocalEventLoader extends AsyncTask<Void, Void, Calendar> {
     }
 
     public interface Listener {
-
         void onLoad(Calendar calendar);
     }
 }
