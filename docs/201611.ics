@@ -42,7 +42,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTKWfm3
 DTSTAMP:20161110T16:21:39
-SUMMARY:8月駒ケ谷運動公園子育て交流ひろば  「保育ネットワーク・ミルク」
+SUMMARY:11月駒ケ谷運動公園子育て交流ひろば  「保育ネットワーク・ミルク」
 DESCRIPTION:駒ケ谷運動公園体育館の講座室で毎週3日開設している、子育て中の親子が気軽に立ち寄り、自由に遊ぶことができるひろばです。おもちゃで自由に遊べるほか、子育て支援に関する講座や催し、子育てについての相談や情報提供なども行っています。  http://www.city.sanda.lg.jp/kodomo/komagatani/28nenndo/event/08miruku01.html
 DTSTART:20161101T093000
 DTEND:20161101T123000
@@ -114,7 +114,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTwvU9y
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月地域子育てステーション 「認定こども園 北摂学園幼稚園」
+SUMMARY:11月地域子育てステーション 「認定こども園 北摂学園幼稚園」
 DESCRIPTION:在宅の子育てをしている親と子が一緒に遊んだり、気軽に子育て相談ができる場所を提供しています。  http://www.city.sanda.lg.jp/kodomo/station/2016/hokugaku0803.html
 DTSTART:20161103T100000
 DTEND:20161103T120000
@@ -126,7 +126,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTftOSa
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月駅前子育て交流ひろば 「子育て相談日」
+SUMMARY:11月駅前子育て交流ひろば 「子育て相談日」
 DESCRIPTION:駅前子育て交流ひろばでは、毎週1回、子育て相談を実施しています。  http://www.city.sanda.lg.jp/kodomo/ekimae/28nendo/event/08souhoiku03.html
 DTSTART:20161103T140000
 DTEND:20161103T160000
@@ -138,7 +138,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTyU0XD
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月子育て交流ひろば 【ベビーサロン（0～11か月まで）】
+SUMMARY:11月子育て交流ひろば 【ベビーサロン（0～11か月まで）】
 DESCRIPTION:0～11か月のお子さんと保護者の方へ 「楽しく交流しましょう！」子育てのワンポイントアドバイス、ふれあい遊び、読み聞かせなどもあります。  http://www.city.sanda.lg.jp/kouryuu/kosodateyouryuuhiroba28nendo/event/baby0803.html
 DTSTART:20161103T103000
 DTEND:20161103T113000
@@ -150,7 +150,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTh23ei
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月子育て交流ひろば 【絵本の読み聞かせ（8月3日開催）】
+SUMMARY:11月子育て交流ひろば 【絵本の読み聞かせ（11月3日開催）】
 DESCRIPTION:読み聞かせグループ「わらべ」が、絵本の読み聞かせや手遊びをします。  http://www.city.sanda.lg.jp/kouryuu/kosodateyouryuuhiroba28nendo/event/yomikikase0803.html
 DTSTART:20161103T110000
 DTEND:20161103T112500
@@ -162,7 +162,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTYIxuY
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月駒ケ谷運動公園子育て交流ひろば 「三田市シルバー人材センター」
+SUMMARY:11月駒ケ谷運動公園子育て交流ひろば 「三田市シルバー人材センター」
 DESCRIPTION:駒ケ谷運動公園体育館の講座室で毎週3日開設している、子育て中の親子が気軽に立ち寄り、自由に遊ぶことができるひろばです。おもちゃで自由に遊べるほか、子育て支援に関する講座や催し、子育てについての相談や情報提供なども行っています。  http://www.city.sanda.lg.jp/kodomo/komagatani/28nenndo/event/08siruba03.html
 DTSTART:20161103T093000
 DTEND:20161103T123000
@@ -174,7 +174,7 @@ END:VEVENT
 BEGIN:VEVENT
 UID:SANDAEVENTzJgzb
 DTSTAMP:20161105T21:23:54
-SUMMARY:8月シニア・ユースひろば 【Café de ふらっと（8月3日）】
+SUMMARY:11月シニア・ユースひろば 【Café de ふらっと（11月3日）】
 DESCRIPTION:障がい福祉サービス施設「三田わくわく村」がカフェを開催！  http://www.city.sanda.lg.jp/kouryuu/siniayu-suhiroba28nendo/event/cafe0803.html
 DTSTART:20161103T110000
 DTEND:20161103T140000
