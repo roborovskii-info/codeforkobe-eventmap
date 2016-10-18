@@ -1,6 +1,5 @@
 package org.codeforkobe.eventmap.ics;
 
-import org.codeforkobe.eventmap.R;
 import org.codeforkobe.eventmap.entity.Calendar;
 import org.codeforkobe.eventmap.entity.Event;
 import org.codeforkobe.eventmap.entity.Property;
@@ -12,11 +11,10 @@ import android.util.Log;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Scanner;
 
 /**
- * icsファイルをパースする。今のところ固定のファイルを読み込むだけ。
+ * doInBackground時にファイルパスを与えるとicsファイルをパースする。
  *
  * @author ISHIMARU Sohei on 2016/07/01.
  */
@@ -43,7 +41,7 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
             return null;
         }
 
-        Calendar calendar = new Calendar();
+        Calendar cal = new Calendar();
         File file = new File(params[0]);
 
         /* ical4j大きすぎる...汚いけど自前で... */
@@ -59,18 +57,18 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
 
                     switch (values[0]) {
                         case Property.BEGIN:
-                        /* BEGIN:VEVENT */
+                            /* BEGIN:VEVENT */
                             if (Property.VEVENT.equals(values[1])) {
                                 event = new Event();
                             }
                             break;
 
                         case Property.END:
-                        /* END:VEVENT */
+                            /* END:VEVENT */
                             if (Property.VEVENT.equals(values[1])) {
                                 if (event != null) {
                                     try {
-                                        calendar.addEvent(event.clone());
+                                        cal.addEvent(event.clone());
                                     } catch (CloneNotSupportedException e) {
                                         e.printStackTrace();
                                     }
@@ -82,7 +80,7 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
                             if (event == null) {
                                 if (1 < values.length) {
                                     int startIndex = line.indexOf(":") + 1;
-                                    handleCalendarNode(values[0], line.substring(startIndex, line.length()), calendar);
+                                    handleCalendarNode(values[0], line.substring(startIndex, line.length()), cal);
                                 }
                             } else {
                                 if (1 < values.length) {
@@ -97,7 +95,7 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        return calendar;
+        return cal;
     }
 
     private void handleCalendarNode(String key, String value, Calendar calendar) {
@@ -178,11 +176,12 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
     protected void onPostExecute(Calendar calendar) {
         super.onPostExecute(calendar);
         if (mListener != null) {
-            mListener.onLoad(calendar);
+            mListener.onCalendarLoaded(calendar);
         }
     }
 
     public interface Listener {
-        void onLoad(Calendar calendar);
+
+        void onCalendarLoaded(Calendar calendar);
     }
 }

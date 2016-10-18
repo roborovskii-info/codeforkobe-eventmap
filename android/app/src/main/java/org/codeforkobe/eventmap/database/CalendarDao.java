@@ -50,8 +50,16 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
             values.put(COLUMN_CALENDAR_ID, calendar.getCalendarId());
         }
         values.put(COLUMN_METHOD, calendar.getCalendarId());
-        values.put(COLUMN_VERSION, calendar.getVersion());
-        values.put(COLUMN_PRODUCT_IDENTIFIER, calendar.getProductIdentifier());
+        if (calendar.getVersion() == null) {
+            values.put(COLUMN_VERSION, "0.0");
+        } else {
+            values.put(COLUMN_VERSION, calendar.getVersion());
+        }
+        if (calendar.getProductIdentifier() == null) {
+            values.put(COLUMN_PRODUCT_IDENTIFIER, "unknown");
+        } else {
+            values.put(COLUMN_PRODUCT_IDENTIFIER, calendar.getProductIdentifier());
+        }
         values.put(COLUMN_CALENDAR_SCALE, calendar.getCalendarScale());
         values.put(COLUMN_TIME_ZONE_IDENTIFIER, calendar.getTimeZoneIdentifier());
         values.put(COLUMN_TIME_ZONE_OFFSET_FROM, calendar.getTimeZoneOffsetFrom());

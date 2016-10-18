@@ -4,6 +4,8 @@ import org.codeforkobe.eventmap.R;
 import org.codeforkobe.eventmap.database.Database;
 import org.codeforkobe.eventmap.entity.Calendar;
 import org.codeforkobe.eventmap.entity.Event;
+import org.codeforkobe.eventmap.ics.EventParseTask;
+import org.codeforkobe.eventmap.ics.RemoteEventLoader;
 import org.codeforkobe.eventmap.ui.adapter.EventListAdapter;
 import org.codeforkobe.eventmap.ui.adapter.OnItemClickListener;
 
@@ -18,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
@@ -52,10 +55,46 @@ public class EventListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new EventListAdapter(this, mOnItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
-        LocalEventLoader task = new LocalEventLoader(this);
-        task.setListener(mEventLoadListener);
-        task.execute();
+
+        RemoteEventLoader loader = new RemoteEventLoader(this);
+        loader.setOnFileSavedListener(mFileSavedListener);
+        loader.execute();
     }
+
+    private RemoteEventLoader.Listener mFileSavedListener = new RemoteEventLoader.Listener() {
+        @Override
+        public void onFileSaved(String path) {
+            Log.d(LOG_TAG, "Path : " + path);
+            if (path == null) {
+                /* TODO: エラー処理 */
+                return;
+            }
+            EventParseTask task = new EventParseTask(EventListActivity.this);
+            task.setListener(mParseListener);
+            File file = new File(getFilesDir(), path);
+            task.execute(file.toString());
+        }
+    };
+
+    private EventParseTask.Listener mParseListener = new EventParseTask.Listener() {
+        @Override
+        public void onCalendarLoaded(Calendar calendar) {
+            Database.calendars.deleteAll();
+            Database.events.deleteAll();
+
+            long calendarId = Database.calendars.add(calendar);
+            for (Event event : calendar.getEventList()) {
+                Log.d(LOG_TAG, event.toString());
+                event.setCalendarId(calendarId);
+                Database.events.add(event);
+            }
+
+            List<Event> events = Database.events.fetchByCalendarId(calendarId);
+            for (Event event : events) {
+                mAdapter.addEvent(event);
+            }
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,25 +118,6 @@ public class EventListActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private LocalEventLoader.Listener mEventLoadListener = new LocalEventLoader.Listener() {
-        @Override
-        public void onLoad(Calendar calendar) {
-            Database.calendars.deleteAll();
-            Database.events.deleteAll();
-
-            long calendarId = Database.calendars.add(calendar);
-            for (Event event : calendar.getEventList()) {
-                Log.d(LOG_TAG, event.toString());
-                event.setCalendarId(calendarId);
-                Database.events.add(event);
-            }
-
-            List<Event> events = Database.events.fetchByCalendarId(calendarId);
-            for (Event event : events) {
-                mAdapter.addEvent(event);
-            }
-        }
-    };
 
     private OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
