@@ -3,7 +3,6 @@
           package="org.codeforkobe.eventmap">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <uses-feature
             android:glEsVersion="0x00020000"
@@ -22,7 +21,7 @@
         <activity
                 android:name=".ui.EventDetailActivity"/>
         <activity
-                android:name=".ui.EventListActivity">
+                android:name=".ui.EventPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

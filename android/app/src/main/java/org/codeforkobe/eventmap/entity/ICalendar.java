@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author ISHIMARU Sohei on 2016/08/05.
  */
-public class Calendar {
+public class ICalendar {
 
     private long mCalendarId;
 
@@ -28,7 +28,7 @@ public class Calendar {
 
     private List<Event> mEventList;
 
-    public Calendar() {
+    public ICalendar() {
         mEventList = new ArrayList<>();
     }
 

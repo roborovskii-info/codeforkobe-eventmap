@@ -1,6 +1,6 @@
 package org.codeforkobe.eventmap.ics;
 
-import org.codeforkobe.eventmap.entity.Calendar;
+import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.entity.Event;
 import org.codeforkobe.eventmap.entity.Property;
 
@@ -18,7 +18,7 @@ import java.util.Scanner;
  *
  * @author ISHIMARU Sohei on 2016/07/01.
  */
-public class EventParseTask extends AsyncTask<String, Void, Calendar> {
+public class EventParseTask extends AsyncTask<String, Void, ICalendar> {
 
     private static final String LOG_TAG = "EventLoadTask";
 
@@ -35,13 +35,13 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
     }
 
     @Override
-    protected Calendar doInBackground(String... params) {
+    protected ICalendar doInBackground(String... params) {
         Log.d(LOG_TAG, "# doInBackground(Void...)");
         if (params == null || params.length == 0) {
             return null;
         }
 
-        Calendar cal = new Calendar();
+        ICalendar cal = new ICalendar();
         File file = new File(params[0]);
 
         /* ical4j大きすぎる...汚いけど自前で... */
@@ -98,7 +98,7 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
         return cal;
     }
 
-    private void handleCalendarNode(String key, String value, Calendar calendar) {
+    private void handleCalendarNode(String key, String value, ICalendar calendar) {
         if (key == null) {
             return;
         }
@@ -173,7 +173,7 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
     }
 
     @Override
-    protected void onPostExecute(Calendar calendar) {
+    protected void onPostExecute(ICalendar calendar) {
         super.onPostExecute(calendar);
         if (mListener != null) {
             mListener.onCalendarLoaded(calendar);
@@ -182,6 +182,6 @@ public class EventParseTask extends AsyncTask<String, Void, Calendar> {
 
     public interface Listener {
 
-        void onCalendarLoaded(Calendar calendar);
+        void onCalendarLoaded(ICalendar calendar);
     }
 }

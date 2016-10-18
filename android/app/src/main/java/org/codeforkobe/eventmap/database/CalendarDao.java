@@ -1,6 +1,6 @@
 package org.codeforkobe.eventmap.database;
 
-import org.codeforkobe.eventmap.entity.Calendar;
+import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.entity.Event;
 
 import android.content.ContentValues;
@@ -13,18 +13,18 @@ import java.util.List;
 /**
  * @author ISHIMARU Sohei on 2016/08/05.
  */
-public class CalendarDao extends AbstractDataProvider<Calendar> implements ICalendarSchema, Dao<Calendar> {
+public class CalendarDao extends AbstractDataProvider<ICalendar> implements ICalendarSchema, Dao<ICalendar> {
 
     public CalendarDao(SQLiteDatabase db) {
         super(db);
     }
 
     @Override
-    protected Calendar cursorToEntity(Cursor cursor) {
+    protected ICalendar cursorToEntity(Cursor cursor) {
         if (cursor == null) {
             return null;
         }
-        Calendar calendar = new Calendar();
+        ICalendar calendar = new ICalendar();
         calendar.setCalendarId(cursor.getLong(cursor.getColumnIndex(COLUMN_CALENDAR_ID)));
         calendar.setMethod(cursor.getString(cursor.getColumnIndex(COLUMN_METHOD)));
         calendar.setVersion(cursor.getString(cursor.getColumnIndex(COLUMN_VERSION)));
@@ -41,7 +41,7 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
     }
 
     @Override
-    protected ContentValues entityToContentValues(Calendar calendar) {
+    protected ContentValues entityToContentValues(ICalendar calendar) {
         if (calendar == null) {
             return null;
         }
@@ -69,8 +69,8 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
     }
 
     @Override
-    public Calendar fetchById(long id) {
-        Calendar calendar = null;
+    public ICalendar fetchById(long id) {
+        ICalendar calendar = null;
         String where = COLUMN_CALENDAR_ID + " = ?";
         String[] whereArgs = {Long.toString(id)};
         Cursor cursor = null;
@@ -88,14 +88,14 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
     }
 
     @Override
-    public List<Calendar> fetchAll() {
-        List<Calendar> calendars = new ArrayList<>();
+    public List<ICalendar> fetchAll() {
+        List<ICalendar> calendars = new ArrayList<>();
         Cursor cursor = null;
         try {
             cursor = super.query(TABLE_NAME, COLUMNS, null, null, null);
             if (cursor != null && cursor.moveToFirst()) {
                 do {
-                    Calendar calendar = cursorToEntity(cursor);
+                    ICalendar calendar = cursorToEntity(cursor);
                     calendars.add(calendar);
                 } while (cursor.moveToNext());
             }
@@ -108,7 +108,7 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
     }
 
     @Override
-    public long add(Calendar calendar) {
+    public long add(ICalendar calendar) {
         if (calendar == null) {
             return 0;
         }
@@ -116,7 +116,7 @@ public class CalendarDao extends AbstractDataProvider<Calendar> implements ICale
     }
 
     @Override
-    public int update(Calendar calendar) {
+    public int update(ICalendar calendar) {
         if (calendar == null) {
             return 0;
         }
