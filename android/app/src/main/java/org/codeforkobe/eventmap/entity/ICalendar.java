@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class ICalendar {
 
+    /** カレンダーIDは、西暦+月を使用する yyyymm */
     private long mCalendarId;
 
     private String mMethod;

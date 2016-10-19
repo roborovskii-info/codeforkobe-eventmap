@@ -1,11 +1,12 @@
 package org.codeforkobe.eventmap.database;
 
-import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.entity.Event;
+import org.codeforkobe.eventmap.entity.ICalendar;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.List;
  * @author ISHIMARU Sohei on 2016/08/05.
  */
 public class CalendarDao extends AbstractDataProvider<ICalendar> implements ICalendarSchema, Dao<ICalendar> {
+
+    private static final String LOG_TAG = "CalendarDao";
 
     public CalendarDao(SQLiteDatabase db) {
         super(db);
@@ -46,10 +49,8 @@ public class CalendarDao extends AbstractDataProvider<ICalendar> implements ICal
             return null;
         }
         ContentValues values = new ContentValues();
-        if (0 < calendar.getCalendarId()) {
-            values.put(COLUMN_CALENDAR_ID, calendar.getCalendarId());
-        }
-        values.put(COLUMN_METHOD, calendar.getCalendarId());
+        values.put(COLUMN_CALENDAR_ID, calendar.getCalendarId());
+        values.put(COLUMN_METHOD, calendar.getMethod());
         if (calendar.getVersion() == null) {
             values.put(COLUMN_VERSION, "0.0");
         } else {
@@ -112,6 +113,7 @@ public class CalendarDao extends AbstractDataProvider<ICalendar> implements ICal
         if (calendar == null) {
             return 0;
         }
+        Log.d(LOG_TAG, "+ add(ICalendar) : Calendar ID = " + calendar.getCalendarId());
         return super.insert(TABLE_NAME, entityToContentValues(calendar));
     }
 
@@ -123,15 +125,18 @@ public class CalendarDao extends AbstractDataProvider<ICalendar> implements ICal
         long id = calendar.getCalendarId();
         String where = COLUMN_CALENDAR_ID + " = ?";
         String[] whereArgs = {Long.toString(id)};
-
+        Log.d(LOG_TAG, "+ update(ICalendar) : Calendar ID = " + id);
         return super.update(TABLE_NAME, entityToContentValues(calendar), where, whereArgs);
     }
 
     @Override
     public boolean deleteById(long id) {
+        Log.d(LOG_TAG, "+ deleteById(long) : ID = " + id);
         String where = COLUMN_CALENDAR_ID + " = ?";
         String[] whereArgs = {Long.toString(id)};
-        return 0 < super.delete(TABLE_NAME, where, whereArgs);
+        int count = super.delete(TABLE_NAME, where, whereArgs);
+        Log.d(LOG_TAG, "  delete " + count + " items.");
+        return 0 < count;
     }
 
     @Override

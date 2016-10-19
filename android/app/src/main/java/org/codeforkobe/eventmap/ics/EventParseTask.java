@@ -1,7 +1,7 @@
 package org.codeforkobe.eventmap.ics;
 
-import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.entity.Event;
+import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.entity.Property;
 
 import android.content.Context;
@@ -26,12 +26,18 @@ public class EventParseTask extends AsyncTask<String, Void, ICalendar> {
 
     private Context mContext;
 
+    private int mCalendarId;
+
     public EventParseTask(Context context) {
         mContext = context;
     }
 
     public void setListener(Listener listener) {
         mListener = listener;
+    }
+
+    public void setCalendarId(int calendarId) {
+        this.mCalendarId = calendarId;
     }
 
     @Override
@@ -175,13 +181,13 @@ public class EventParseTask extends AsyncTask<String, Void, ICalendar> {
     @Override
     protected void onPostExecute(ICalendar calendar) {
         super.onPostExecute(calendar);
+        calendar.setCalendarId(mCalendarId);
         if (mListener != null) {
             mListener.onCalendarLoaded(calendar);
         }
     }
 
     public interface Listener {
-
         void onCalendarLoaded(ICalendar calendar);
     }
 }

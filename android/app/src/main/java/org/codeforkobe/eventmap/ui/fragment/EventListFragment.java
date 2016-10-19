@@ -7,7 +7,6 @@ import org.codeforkobe.eventmap.entity.ICalendar;
 import org.codeforkobe.eventmap.ics.EventParseTask;
 import org.codeforkobe.eventmap.ics.RemoteEventLoader;
 import org.codeforkobe.eventmap.ui.EventDetailActivity;
-import org.codeforkobe.eventmap.ui.EventListActivity;
 import org.codeforkobe.eventmap.ui.adapter.EventListAdapter;
 import org.codeforkobe.eventmap.ui.adapter.OnItemClickListener;
 
@@ -17,7 +16,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +44,10 @@ public class EventListFragment extends Fragment {
     RecyclerView mRecyclerView;
 
     private EventListAdapter mAdapter;
+
+    private int mYear;
+
+    private int mMonth;
 
     public static EventListFragment newInstance() {
         Calendar calendar = Calendar.getInstance();
@@ -80,12 +82,14 @@ public class EventListFragment extends Fragment {
 
         Bundle args = getArguments();
         Calendar calendar = Calendar.getInstance();
-        int year = args.getInt(ARGS_YEAR, calendar.get(Calendar.YEAR));
-        int month = args.getInt(ARGS_MONTH, calendar.get(Calendar.MONTH) + 1);
+        mYear = args.getInt(ARGS_YEAR, calendar.get(Calendar.YEAR));
+        mMonth = args.getInt(ARGS_MONTH, calendar.get(Calendar.MONTH) + 1);
+
+        Log.d(LOG_TAG, " Unit : " + (mYear * 100 + mMonth));
 
         RemoteEventLoader loader = new RemoteEventLoader(getActivity());
-        loader.setYear(year);
-        loader.setMonth(month);
+        loader.setYear(mYear);
+        loader.setMonth(mMonth);
 
         loader.setOnFileSavedListener(mFileSavedListener);
         loader.execute();
@@ -100,6 +104,7 @@ public class EventListFragment extends Fragment {
                 return;
             }
             EventParseTask task = new EventParseTask(getActivity());
+            task.setCalendarId(mYear * 100 + mMonth);
             task.setListener(mParseListener);
             File file = new File(getActivity().getFilesDir(), path);
             task.execute(file.toString());
@@ -109,10 +114,14 @@ public class EventListFragment extends Fragment {
     private EventParseTask.Listener mParseListener = new EventParseTask.Listener() {
         @Override
         public void onCalendarLoaded(ICalendar calendar) {
-            Database.calendars.deleteAll();
-            Database.events.deleteAll();
+            Log.d(LOG_TAG, "+ onCalendarLoaded(ICalendar)");
 
-            long calendarId = Database.calendars.add(calendar);
+            long calendarId = calendar.getCalendarId();
+
+//            Database.calendars.deleteById(calendarId);
+//            Database.events.deleteById(calendarId);
+
+            Database.calendars.add(calendar);
             for (Event event : calendar.getEventList()) {
                 Log.d(LOG_TAG, event.toString());
                 event.setCalendarId(calendarId);

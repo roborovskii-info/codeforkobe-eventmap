@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 /**
+ *
+ * adb shell run-as org.codeforkobe.eventmap cat /data/data/org.codeforkobe.eventmap/databases/event.sqlite | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/event.sqlite
+ *
  * @author ISHIMARU Sohei on 2016/08/05.
  */
 public class Database {
@@ -29,6 +32,7 @@ public class Database {
     }
 
     public Database open() throws SQLiteException {
+        Log.d(LOG_TAG, "+ open()");
         mOpenHelper = new DatabaseHelper(mContext);
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         events = new EventDao(db);
@@ -37,6 +41,7 @@ public class Database {
     }
 
     public void close() {
+        Log.d(LOG_TAG, "+ close()");
         if (mOpenHelper != null) {
             mOpenHelper.close();
         }

@@ -4,8 +4,8 @@ import org.codeforkobe.eventmap.entity.Event;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,8 @@ import java.util.List;
  * @author ISHIMARU Sohei on 2016/08/05.
  */
 public class EventDao extends AbstractDataProvider<Event> implements IEventSchema, Dao<Event> {
+
+    private static final String LOG_TAG = "EventDao";
 
     public EventDao(SQLiteDatabase db) {
         super(db);
@@ -192,9 +194,12 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
 
     @Override
     public boolean deleteById(long id) {
+        Log.d(LOG_TAG, "+ deleteById(long) : ID = " + id);
         String where = COLUMN_EVENT_ID + " = ?";
         String[] whereArgs = {Long.toString(id)};
-        return 0 < super.delete(TABLE_NAME, where, whereArgs);
+        int count = super.delete(TABLE_NAME, where, whereArgs);
+        Log.d(LOG_TAG, "  delete " + count + " items.");
+        return 0 < count;
     }
 
     @Override

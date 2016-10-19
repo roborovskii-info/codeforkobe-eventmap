@@ -23,7 +23,7 @@ public interface ICalendarSchema {
     String COLUMN_TIME_ZONE_NAME = "time_zone_name";
 
     String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
-            + COLUMN_CALENDAR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_CALENDAR_ID + " INTEGER PRIMARY KEY, "
             + COLUMN_METHOD + " TEXT NOT NULL, "
             + COLUMN_VERSION + " TEXT NOT NULL, "
             + COLUMN_PRODUCT_IDENTIFIER + " TEXT NOT NULL, "
@@ -31,8 +31,8 @@ public interface ICalendarSchema {
             + COLUMN_TIME_ZONE_IDENTIFIER + " TEXT NOT NULL, "
             + COLUMN_TIME_ZONE_OFFSET_FROM + " TEXT NOT NULL, "
             + COLUMN_TIME_ZONE_OFFSET_TO + " TEXT NOT NULL, "
-            + COLUMN_TIME_ZONE_NAME + " TEXT NOT NULL, "
-            + "UNIQUE (" + COLUMN_PRODUCT_IDENTIFIER + ") ON CONFLICT REPLACE"
+            + COLUMN_TIME_ZONE_NAME + " TEXT NOT NULL"
+            // + "UNIQUE (" + COLUMN_PRODUCT_IDENTIFIER + ") ON CONFLICT REPLACE"
             + ");";
 
     String[] CREATE_INDEX = {

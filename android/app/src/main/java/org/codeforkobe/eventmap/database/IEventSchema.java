@@ -51,8 +51,8 @@ public interface IEventSchema {
             + COLUMN_LONGITUDE + " REAL, "
             + COLUMN_CONTACT + " TEXT, "
             + COLUMN_TRANSPARENT + " TEXT, "
-            + COLUMN_CALENDAR_ID + " INTEGER NOT NULL, "
-            + "UNIQUE (" + COLUMN_UID + ") ON CONFLICT REPLACE"
+            + COLUMN_CALENDAR_ID + " INTEGER NOT NULL"
+//            + "UNIQUE (" + COLUMN_UID + ") ON CONFLICT REPLACE"
             + ");";
 
     String[] CREATE_INDEX = {

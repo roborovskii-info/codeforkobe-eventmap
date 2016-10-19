@@ -1,7 +1,6 @@
 package org.codeforkobe.eventmap.ui;
 
 import org.codeforkobe.eventmap.R;
-import org.codeforkobe.eventmap.ui.adapter.EventListAdapter;
 import org.codeforkobe.eventmap.ui.fragment.EventListFragment;
 
 import android.content.Context;
@@ -14,7 +13,6 @@ import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +31,8 @@ import butterknife.ButterKnife;
 public class EventPagerActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "EventListActivity";
+    /* 当月 + 前後1年分 */
+    private static final int CALENDAR_RANGE = 12 * 2 + 1;
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
@@ -55,8 +55,9 @@ public class EventPagerActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         mViewPager.setAdapter(new FragmentTabsAdapter(getSupportFragmentManager(), this));
-        mViewPager.setCurrentItem(Integer.MAX_VALUE);
+        mViewPager.setCurrentItem(12);
         mPagerTabStrip.setDrawFullUnderline(false);
+        mPagerTabStrip.setTabIndicatorColorResource(R.color.colorPrimary);
     }
 
     @Override
@@ -92,12 +93,13 @@ public class EventPagerActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return EventListFragment.newInstance();
+            Calendar calendar = getCalendar(position);
+            return EventListFragment.newInstance(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1);
         }
 
         @Override
         public int getCount() {
-            return Integer.MAX_VALUE;
+            return CALENDAR_RANGE;
         }
 
         @Override
@@ -108,7 +110,7 @@ public class EventPagerActivity extends AppCompatActivity {
 
         private Calendar getCalendar(int position) {
             Calendar calendar = Calendar.getInstance();
-            int offset = Integer.MAX_VALUE - position - 1;
+            int offset = 12 - position;
             calendar.add(Calendar.MONTH, -offset);
             return calendar;
         }
