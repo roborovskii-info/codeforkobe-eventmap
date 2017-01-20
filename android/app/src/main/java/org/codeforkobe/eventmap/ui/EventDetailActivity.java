@@ -23,6 +23,8 @@ import butterknife.OnClick;
  */
 public class EventDetailActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = "EventDetailActivity";
+
     public static final String EXTRA_EVENT_ID = "event_id";
 
     @BindView(R.id.toolbar)

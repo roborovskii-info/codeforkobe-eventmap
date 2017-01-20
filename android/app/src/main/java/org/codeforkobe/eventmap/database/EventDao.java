@@ -202,6 +202,15 @@ public class EventDao extends AbstractDataProvider<Event> implements IEventSchem
         return 0 < count;
     }
 
+    public boolean deleteByCalendarId(long id) {
+        Log.d(LOG_TAG, "+ deleteByCalendarId(long) : Calendar ID = " + id);
+        String where = COLUMN_CALENDAR_ID + " = ?";
+        String[] whereArgs = {Long.toString(id)};
+        int count = super.delete(TABLE_NAME, where, whereArgs);
+        Log.d(LOG_TAG, "  delete " + count + " items.");
+        return 0 < count;
+    }
+
     @Override
     public boolean deleteAll() {
         return 0 < super.delete(TABLE_NAME, null, null);

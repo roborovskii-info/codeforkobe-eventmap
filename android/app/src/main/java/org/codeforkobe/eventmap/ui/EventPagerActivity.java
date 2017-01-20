@@ -57,7 +57,7 @@ public class EventPagerActivity extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentTabsAdapter(getSupportFragmentManager(), this));
         mViewPager.setCurrentItem(12);
         mPagerTabStrip.setDrawFullUnderline(false);
-        mPagerTabStrip.setTabIndicatorColorResource(R.color.colorPrimary);
+        mPagerTabStrip.setTabIndicatorColorResource(R.color.primary);
     }
 
     @Override

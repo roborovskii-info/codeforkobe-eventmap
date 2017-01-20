@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/list_event"
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:layout_height="match_parent">
 
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/list_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+        />
+
+        <android.support.v7.widget.CardView
+                android:id="@+id/card_empty"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:visibility="gone"
+                android:layout_margin="@dimen/common_spacing_s"
+                app:cardBackgroundColor="@color/cardview_light_background"
+                app:cardUseCompatPadding="true">
+            <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/common_spacing_l"
+                    android:paddingRight="@dimen/common_spacing_l"
+                    android:text="@string/info_event_empty"
+                    style="@style/TextAppearance.AppCompat.Medium"
+            />
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

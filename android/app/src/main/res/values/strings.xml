@@ -7,4 +7,5 @@
     <string name="event_end_date">終了時間</string>
     <string name="location">開催場所</string>
     <string name="contact">お問い合わせ先</string>
+    <string name="info_event_empty">表示するイベントがありません</string>
 </resources>

@@ -9,10 +9,11 @@ import android.graphics.PorterDuff;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(EventListAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final EventListAdapter.ViewHolder holder, int position) {
         Event event = mDataList.get(position);
         if (event != null) {
 
@@ -72,14 +73,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
             int color = holder.getColor(mContext, title);
             holder.iconView.getBackground().setColorFilter(color, PorterDuff.Mode.MULTIPLY);
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mClickListener != null) {
-                        mClickListener.onItemClicked(v, position);
-                    }
-                }
-            });
+            holder.itemView.setOnClickListener(holder);
 
         }
     }
@@ -93,7 +87,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
         }
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements OnClickListener {
 
         @BindView(R.id.text_title)
         TextView titleView;
@@ -123,7 +117,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
                 R.color.brown_500,
         };
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -134,7 +128,15 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
             }
             int codeAt = title.codePointAt(0);
             int index =  codeAt % colors.length;
+
             return context.getResources().getColor(colors[index]);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mClickListener != null) {
+                mClickListener.onItemClick(null, v, getAdapterPosition(), getItemId());
+            }
         }
     }
 }

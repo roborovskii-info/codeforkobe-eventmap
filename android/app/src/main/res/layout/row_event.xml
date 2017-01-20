@@ -25,7 +25,6 @@
                 android:layout_height="@dimen/event_icon_size"
                 android:layout_margin="@dimen/common_spacing_m"
                 android:gravity="center"
-                android:singleLine="true"
                 android:background="@drawable/circle"
                 android:textAppearance="?android:attr/textAppearanceLargeInverse"
                 android:textStyle="bold"/>

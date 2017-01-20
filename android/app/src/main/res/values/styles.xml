@@ -3,21 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorBackground">@color/viewBackground</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:colorBackground">@color/view_background</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-    <style name="TextAppearance.AppTheme.Subhead" parent="TextAppearance.AppCompat.Subhead"/>
-    <style name="TextAppearance.AppTheme.Headline" parent="TextAppearance.AppCompat.Headline" />
-    <style name="TextAppearance.AppTheme.Body1" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:lineSpacingMultiplier">1.2</item>
-    </style>
-    <style name="TextAppearance.AppTheme.Body2" parent="TextAppearance.AppCompat.Body2" />
-    <style name="TextAppearance.AppTheme.Title" parent="TextAppearance.AppCompat.Title" />
 </resources>

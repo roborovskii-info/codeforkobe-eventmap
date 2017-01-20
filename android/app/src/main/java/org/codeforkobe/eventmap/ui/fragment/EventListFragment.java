@@ -8,18 +8,21 @@ import org.codeforkobe.eventmap.ics.EventParseTask;
 import org.codeforkobe.eventmap.ics.RemoteEventLoader;
 import org.codeforkobe.eventmap.ui.EventDetailActivity;
 import org.codeforkobe.eventmap.ui.adapter.EventListAdapter;
-import org.codeforkobe.eventmap.ui.adapter.OnItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import java.io.File;
 import java.util.Calendar;
@@ -40,8 +43,14 @@ public class EventListFragment extends Fragment {
 
     private static final String ARGS_MONTH = "month";
 
+    @BindView(R.id.card_empty)
+    CardView mEmptyCard;
+
     @BindView(R.id.list_event)
     RecyclerView mRecyclerView;
+
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout mSwipeRefreshLayout;
 
     private EventListAdapter mAdapter;
 
@@ -80,13 +89,19 @@ public class EventListFragment extends Fragment {
         mAdapter = new EventListAdapter(getActivity(), mOnItemClickListener);
         mRecyclerView.setAdapter(mAdapter);
 
+        mSwipeRefreshLayout.setOnRefreshListener(mRefreshListener);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.accent);
+
         Bundle args = getArguments();
         Calendar calendar = Calendar.getInstance();
         mYear = args.getInt(ARGS_YEAR, calendar.get(Calendar.YEAR));
         mMonth = args.getInt(ARGS_MONTH, calendar.get(Calendar.MONTH) + 1);
 
-        Log.d(LOG_TAG, " Unit : " + (mYear * 100 + mMonth));
+        requestEvent();
+    }
 
+    private void requestEvent() {
+        mSwipeRefreshLayout.setRefreshing(true);
         RemoteEventLoader loader = new RemoteEventLoader(getActivity());
         loader.setYear(mYear);
         loader.setMonth(mMonth);
@@ -100,7 +115,8 @@ public class EventListFragment extends Fragment {
         public void onFileSaved(String path) {
             Log.d(LOG_TAG, "Path : " + path);
             if (path == null) {
-                /* TODO: エラー処理 */
+                showEmptyCard(true);
+                mSwipeRefreshLayout.setRefreshing(false);
                 return;
             }
             EventParseTask task = new EventParseTask(getActivity());
@@ -118,8 +134,7 @@ public class EventListFragment extends Fragment {
 
             long calendarId = calendar.getCalendarId();
 
-//            Database.calendars.deleteById(calendarId);
-//            Database.events.deleteById(calendarId);
+            Database.events.deleteByCalendarId(calendarId);
 
             Database.calendars.add(calendar);
             for (Event event : calendar.getEventList()) {
@@ -132,12 +147,32 @@ public class EventListFragment extends Fragment {
             for (Event event : events) {
                 mAdapter.addEvent(event);
             }
+
+            showEmptyCard(mAdapter.getItemCount() == 0);
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+    };
+
+    private void showEmptyCard(boolean isEmpty) {
+        if (isEmpty) {
+            mEmptyCard.setVisibility(View.VISIBLE);
+            mRecyclerView.setVisibility(View.GONE);
+        } else {
+            mEmptyCard.setVisibility(View.GONE);
+            mRecyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private SwipeRefreshLayout.OnRefreshListener mRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            requestEvent();
         }
     };
 
     private OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
-        public void onItemClicked(View v, int position) {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Event event = mAdapter.getEvent(position);
             Intent intent = new Intent(getActivity(), EventDetailActivity.class);
             intent.putExtra(EventDetailActivity.EXTRA_EVENT_ID, event.getEventId());
